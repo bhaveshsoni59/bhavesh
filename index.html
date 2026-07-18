@@ -1,652 +1,545 @@
-<!-- =========================================
-BHAVESH MODERN PORTFOLIO WEBSITE
-White Background Version
-========================================= -->
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Bhavesh Portfolio</title>
-
-  <!-- GOOGLE FONT -->
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-
-  <!-- AOS ANIMATION -->
-
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-  <!-- ICON -->
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Poppins',sans-serif;
-    }
-
-    body{
-      background:white;
-      color:#111;
-      overflow-x:hidden;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    /* SCROLLBAR */
-
-    ::-webkit-scrollbar{
-      width:8px;
-    }
-
-    ::-webkit-scrollbar-thumb{
-      background:#00bfff;
-      border-radius:20px;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      width:100%;
-      padding:22px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:fixed;
-      top:0;
-      z-index:999;
-      background:rgba(255,255,255,0.7);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid #eaeaea;
-    }
-
-    nav h2{
-      font-size:30px;
-      font-weight:700;
-      color:#111;
-    }
-
-    nav h2 span{
-      color:#00bfff;
-    }
-
-    nav ul{
-      display:flex;
-      list-style:none;
-      gap:35px;
-    }
-
-    nav ul li a{
-      text-decoration:none;
-      color:#111;
-      transition:0.3s;
-    }
-
-    nav ul li a:hover{
-      color:#00bfff;
-    }
-
-    /* HERO SECTION */
-
-    .hero{
-      width:100%;
-      min-height:100vh;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:150px 8%;
-      gap:50px;
-      position:relative;
-    }
-
-    .hero::before{
-      content:'';
-      position:absolute;
-      width:450px;
-      height:450px;
-      background:#00bfff;
-      filter:blur(180px);
-      opacity:0.10;
-      top:0;
-      right:0;
-      z-index:-1;
-    }
-
-    .hero-text{
-      flex:1;
-    }
-
-    .hero-text h3{
-      color:#00bfff;
-      font-size:24px;
-      margin-bottom:10px;
-    }
-
-    .hero-text h1{
-      font-size:72px;
-      line-height:1.2;
-      margin-bottom:20px;
-      font-weight:800;
-      color:#111;
-    }
-
-    .hero-text h1 span{
-      color:#00bfff;
-    }
-
-    .hero-text p{
-      color:#555;
-      line-height:1.9;
-      margin-bottom:35px;
-      max-width:600px;
-    }
-
-    .btns{
-      display:flex;
-      gap:20px;
-    }
-
-    .btn{
-      padding:15px 35px;
-      border-radius:50px;
-      text-decoration:none;
-      font-weight:600;
-      transition:0.4s;
-      border:2px solid #00bfff;
-    }
-
-    .btn-primary{
-      background:#00bfff;
-      color:white;
-    }
-
-    .btn-primary:hover{
-      background:#111;
-      color:white;
-      transform:translateY(-6px);
-    }
-
-    .btn-outline{
-      color:#00bfff;
-    }
-
-    .btn-outline:hover{
-      background:#00bfff;
-      color:white;
-      transform:translateY(-6px);
-    }
-
-    /* HERO IMAGE */
-
-    .hero-image{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      position:relative;
-    }
-
-    .hero-image img{
-      width:480px;
-      border-radius:30px;
-      object-fit:cover;
-      animation:float 4s ease-in-out infinite;
-      box-shadow:0 0 40px rgba(0,191,255,0.2);
-    }
-
-    @keyframes float{
-
-      0%{
-        transform:translateY(0px);
-      }
-
-      50%{
-        transform:translateY(-20px);
-      }
-
-      100%{
-        transform:translateY(0px);
-      }
-
-    }
-
-    /* SOCIAL ICONS */
-
-    .social-icons{
-      margin-top:30px;
-      display:flex;
-      gap:20px;
-    }
-
-    .social-icons a{
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:#f3f3f3;
-      color:#111;
-      text-decoration:none;
-      transition:0.4s;
-      font-size:20px;
-    }
-
-    .social-icons a:hover{
-      background:#00bfff;
-      color:white;
-      transform:translateY(-8px);
-    }
-
-    /* SECTION */
-
-    section{
-      padding:100px 8%;
-    }
-
-    .section-title{
-      text-align:center;
-      font-size:45px;
-      margin-bottom:70px;
-      font-weight:700;
-      color:#111;
-    }
-
-    .section-title span{
-      color:#00bfff;
-    }
-
-    /* SKILLS */
-
-    .skills{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:25px;
-    }
-
-    .skill-card{
-      background:#f7f7f7;
-      padding:35px;
-      border-radius:25px;
-      text-align:center;
-      transition:0.4s;
-      border:1px solid transparent;
-    }
-
-    .skill-card:hover{
-      transform:translateY(-10px);
-      border:1px solid #00bfff;
-      box-shadow:0 0 25px rgba(0,191,255,0.15);
-    }
-
-    .skill-card i{
-      font-size:42px;
-      margin-bottom:20px;
-      color:#00bfff;
-    }
-
-    .skill-card h3{
-      color:#111;
-    }
-
-    .skill-card p{
-      color:#555;
-    }
-
-    /* PROJECTS */
-
-    .projects{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:30px;
-    }
-
-    .project-card{
-      background:#f7f7f7;
-      border-radius:25px;
-      overflow:hidden;
-      transition:0.4s;
-    }
-
-    .project-card:hover{
-      transform:translateY(-10px);
-      box-shadow:0 0 30px rgba(0,191,255,0.15);
-    }
-
-    .project-card img{
-      width:100%;
-      height:230px;
-      object-fit:cover;
-    }
-
-    .project-content{
-      padding:25px;
-    }
-
-    .project-content h3{
-      margin-bottom:12px;
-      color:#111;
-    }
-
-    .project-content p{
-      color:#555;
-      line-height:1.8;
-    }
-
-    /* CONTACT */
-
-    .contact{
-      text-align:center;
-    }
-
-    .contact form{
-      max-width:700px;
-      margin:auto;
-    }
-
-    .contact input,
-    .contact textarea{
-      width:100%;
-      padding:18px;
-      margin-bottom:20px;
-      border:none;
-      outline:none;
-      border-radius:18px;
-      background:#f5f5f5;
-      color:#111;
-    }
-
-    footer{
-      padding:30px;
-      text-align:center;
-      background:#f3f3f3;
-      margin-top:60px;
-      color:#555;
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:991px){
-
-      .hero{
-        flex-direction:column-reverse;
-        text-align:center;
-      }
-
-      .hero-text h1{
-        font-size:50px;
-      }
-
-      .hero-image img{
-        width:330px;
-      }
-
-      nav ul{
-        display:none;
-      }
-
-      .btns{
-        justify-content:center;
-      }
-
-      .social-icons{
-        justify-content:center;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bhavesh | Graphic Designer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0d1117;
+color:white;
+}
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:#111827;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+z-index:1000;
+
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#00bfff;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:30px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00bfff;
+}
+
+.hero{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:150px 10% 80px;
+gap:50px;
+
+}
+
+.hero-text h1{
+font-size:55px;
+}
+
+.hero-text h2{
+font-size:30px;
+margin:15px 0;
+color:#00bfff;
+}
+
+.hero-text p{
+line-height:1.8;
+margin-bottom:30px;
+color:#d1d5db;
+}
+
+.btn{
+
+padding:15px 30px;
+background:#00bfff;
+border-radius:30px;
+text-decoration:none;
+color:white;
+font-weight:600;
+
+}
+
+.hero img{
+
+width:420px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,191,255,.3);
+
+}
+
+section{
+padding:90px 10%;
+}
+
+.title{
+text-align:center;
+font-size:38px;
+margin-bottom:50px;
+}
+
+.about{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+
+}
+
+.about img{
+
+width:100%;
+border-radius:20px;
+
+}
+
+.services{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+
+}
+
+.card{
+
+background:#161b22;
+padding:30px;
+border-radius:15px;
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card h3{
+
+margin-bottom:15px;
+color:#00bfff;
+
+}
+
+.portfolio{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+
+}
+
+.project{
+
+background:#161b22;
+padding:15px;
+border-radius:15px;
+
+}
+
+.project img{
+
+width:100%;
+border-radius:10px;
+
+}
+
+.project h3{
+
+margin-top:15px;
+
+}
+
+.skills{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+
+}
+
+.skill{
+
+background:#161b22;
+padding:25px;
+text-align:center;
+border-radius:15px;
+font-weight:600;
+
+}
+
+.contact{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+
+}
+
+.contact-box{
+
+background:#161b22;
+padding:30px;
+border-radius:20px;
+
+}
+
+.contact-box h3{
+
+margin-bottom:20px;
+color:#00bfff;
+
+}
+
+.contact-box p{
+
+margin:15px 0;
+
+}
+
+footer{
+
+padding:30px;
+text-align:center;
+background:#111827;
+
+}
+
+@media(max-width:900px){
+
+.hero{
+flex-direction:column-reverse;
+text-align:center;
+}
+
+.about{
+
+grid-template-columns:1fr;
+
+}
+
+.contact{
+
+grid-template-columns:1fr;
+
+}
+
+.hero img{
+
+width:100%;
+
+}
+
+header{
+
+flex-direction:column;
+
+}
+
+nav{
+
+margin-top:15px;
+
+}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
+<header>
 
-  <nav>
+<div class="logo">BHAVESH</div>
 
-    <h2>Bhavesh<span></span></h2>
+<nav>
 
-    <ul>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contact">Contact</a>
 
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Skills</a></li>
-      <li><a href="#">Projects</a></li>
-      <li><a href="#">Contact</a></li>
+</nav>
 
-    </ul>
+</header>
 
-  </nav>
+<section class="hero">
 
-  <!-- HERO SECTION -->
+<div class="hero-text">
 
-  <section class="hero">
+<h1>Hello I'm</h1>
 
-    <div class="hero-text" data-aos="fade-right">
+<h2>Bhavesh</h2>
 
-      <h3>Hello, I'm</h3>
+<p>
+Creative and motivated Graphic Design Intern with 4 months of internship experience at Famezel For Freedom. Skilled in creating social media posts, promotional creatives, and digital designs using Canva, Figma, and basic Photoshop & Illustrator. Passionate about learning modern design trends and improving creative skills. Able to work with visual content, typography, color combinations, and basic Ul design concepts.
+</p>
 
-      <h1>
-        Bhavesh <span>Adeshara</span>
-      </h1>
+<a href="#contact" class="btn">Hire Me</a>
 
-      <p>
-        Creative Graphic Designer, Social Media Designer &
-        Digital Marketing Enthusiast creating modern and
-        eye-catching designs for brands and businesses.
-      </p>
+</div>
 
-      <div class="btns">
+<img src="c:\Users\BHAVESH\Downloads\bhavesh.png">
 
-        <a href="#" class="btn btn-primary">
-          View Portfolio
-        </a>
+</section>
 
-        <a href="#" class="btn btn-outline">
-          Hire Me
-        </a>
+<section id="about">
 
-      </div>
+<h2 class="title">About Me</h2>
 
-      <!-- SOCIAL ICONS -->
+<div class="about">
 
-      <div class="social-icons">
+<img src="c:\Users\BHAVESH\Downloads\bhavesh.png">
 
-        <a href="#"><i class="fab fa-instagram"></i></a>
+<div>
 
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+<p>
 
-        <a href="#"><i class="fab fa-behance"></i></a>
+I'm Bhavesh Adeshara, a passionate Graphic Designer specializing in Social Media Design, UI/UX Design, Branding, Posters, Banner Design, Marketing Creatives and Digital Marketing.
 
-        <a href="#"><i class="fab fa-dribbble"></i></a>
+I love creating attractive and professional designs that help brands grow.
 
-      </div>
+</p>
 
-    </div>
+</div>
 
-    <!-- YOUR GENERATED IMAGE -->
+</div>
 
-    <div class="hero-image" data-aos="fade-left">
+</section>
 
-      <img src="bhavesh.png" alt="Bhavesh Portfolio">
+<section id="services">
 
-    </div>
+<h2 class="title">My Services</h2>
 
-  </section>
+<div class="services">
 
-  <!-- SKILLS -->
+<div class="card">
 
-  <section>
+<h3>Graphic Design</h3>
 
-    <h2 class="section-title">
-      My <span>Skills</span>
-    </h2>
+<p>Posters, Branding, Flyers, Business Cards and Creative Designs.</p>
 
-    <div class="skills">
+</div>
 
-      <div class="skill-card" data-aos="fade-up">
+<div class="card">
 
-        <i class="fa-brands fa-figma"></i>
+<h3>Social Media Design</h3>
 
-        <h3>Figma</h3>
+<p>Instagram Posts, Reels Covers, Facebook Ads and Campaign Designs.</p>
 
-        <p>Modern UI/UX Design</p>
+</div>
 
-      </div>
+<div class="card">
 
-      <div class="skill-card" data-aos="fade-up">
+<h3>UI/UX Design</h3>
 
-        <i class="fa-solid fa-palette"></i>
+<p>Landing Pages, Mobile App Design, Website Interfaces.</p>
 
-        <h3>Graphic Design</h3>
+</div>
 
-        <p>Creative Social Media Designs</p>
+<div class="card">
 
-      </div>
+<h3>Digital Marketing</h3>
 
-      <div class="skill-card" data-aos="fade-up">
+<p>Creative Ads, Marketing Graphics and Promotional Content.</p>
 
-        <i class="fa-solid fa-camera"></i>
+</div>
 
-        <h3>Photoshop</h3>
+</div>
 
-        <p>Photo Editing & Posters</p>
+</section>
 
-      </div>
+<section id="portfolio">
 
-      <div class="skill-card" data-aos="fade-up">
+<h2 class="title">Portfolio</h2>
 
-        <i class="fa-solid fa-chart-line"></i>
+<div class="portfolio">
 
-        <h3>Marketing</h3>
+<div class="project">
 
-        <p>SEO & Digital Marketing</p>
+<img src="https://picsum.photos/500/350?1">
 
-      </div>
+<h3>Social Media Campaign</h3>
 
-    </div>
+</div>
 
-  </section>
+<div class="project">
 
-  <!-- PROJECTS -->
+<img src="https://picsum.photos/500/350?2">
 
-  <section>
+<h3>UI/UX Mobile Design</h3>
 
-    <h2 class="section-title">
-      My <span>Projects</span>
-    </h2>
+</div>
 
-    <div class="projects">
+<div class="project">
 
-      <div class="project-card" data-aos="zoom-in">
+<img src="https://picsum.photos/500/350?3">
 
-        <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?q=80&w=1000&auto=format&fit=crop">
+<h3>Brand Identity</h3>
 
-        <div class="project-content">
+</div>
 
-          <h3>Social Media Design</h3>
+<div class="project">
 
-          <p>
-            Instagram post designs, banner ads and branding creatives.
-          </p>
+<img src="https://picsum.photos/500/350?4">
 
-        </div>
+<h3>Digital Marketing</h3>
 
-      </div>
+</div>
 
-      <div class="project-card" data-aos="zoom-in">
+<div class="project">
 
-        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?q=80&w=1000&auto=format&fit=crop">
+<img src="https://picsum.photos/500/350?5">
 
-        <div class="project-content">
+<h3>Website Landing Page</h3>
 
-          <h3>UI/UX Design</h3>
+</div>
 
-          <p>
-            Modern website and mobile UI design in Figma.
-          </p>
+<div class="project">
 
-        </div>
+<img src="https://picsum.photos/500/350?6">
 
-      </div>
+<h3>Instagram Creative</h3>
 
-      <div class="project-card" data-aos="zoom-in">
+</div>
 
-        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop">
+</div>
 
-        <div class="project-content">
+</section>
 
-          <h3>Digital Marketing</h3>
+<section>
 
-          <p>
-            SEO Basics, ad creatives and social media growth.
-          </p>
+<h2 class="title">Skills</h2>
 
-        </div>
+<div class="skills">
 
-      </div>
+<div class="skill">Canva</div>
 
-    </div>
+<div class="skill">Photoshop</div>
 
-  </section>
+<div class="skill">Illustrator</div>
 
-  <!-- CONTACT -->
+<div class="skill">Figma</div>
 
-  <section class="contact">
+<div class="skill">Branding</div>
 
-    <h2 class="section-title">
-      Contact <span>Me</span>
-    </h2>
+<div class="skill">Digital Marketing</div>
 
-    <form data-aos="fade-up">
+</div>
 
-      <input type="text" placeholder="Your Name">
+</section>
 
-      <input type="email" placeholder="Your Email">
+<section id="contact">
 
-      <textarea rows="6" placeholder="Your Message"></textarea>
+<h2 class="title">Contact</h2>
 
-      <button class="btn btn-primary">
-        Send Message
-      </button>
+<div class="contact">
 
-    </form>
+<div class="contact-box">
 
-  </section>
+<h3>Get in Touch</h3>
 
-  <!-- FOOTER -->
+<p><b>Name:</b> Bhavesh Adeshara</p>
 
-  <footer>
+<p><b>Location:</b> Viramgam, Gujarat</p>
 
-    © 2025 Bhavesh Portfolio | All Rights Reserved
+<p><b>Phone:</b><br>
 
-  </footer>
++91 74350 28525<br>
 
-  <!-- AOS SCRIPT -->
++91 83208 60240
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+</p>
 
-  <script>
+<p>
 
-    AOS.init({
+<b>Email:</b><br>
 
-      duration:1200,
-      once:true
+adeshrabhavesh45@gmail.com
 
-    });
+</p>
 
-  </script>
+</div>
+
+<div class="contact-box">
+
+<h3>Social Links</h3>
+
+<p>
+
+Instagram<br>
+
+<a style="color:#00bfff;" href="https://www.instagram.com/mr_kanudo_278?igsh=cWc2dmg2NjFsdmt6" target="_blank">
+
+mr_kanudo_278
+
+</a>
+
+</p>
+
+<p>
+
+LinkedIn<br>
+
+<a style="color:#00bfff;" href="https://www.linkedin.com/in/bhavesh-adeshara-4152842a1" target="_blank">
+
+Bhavesh Adeshara
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Bhavesh | Graphic Designer
+
+</footer>
 
 </body>
 
